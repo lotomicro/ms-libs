@@ -1,0 +1,27 @@
+{
+  "name": "@lotomic/ms-config",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -p tsconfig.lib.json -w",
+    "build": "npm run clean:lib  && npm run build:lib",
+    "build:lib": "tsc -p tsconfig.lib.json",
+    "clean": "npm run clean:lib",
+    "clean:all": "rimraf dist && rimraf coverage && rimraf node_modules",
+    "clean:lib": "rimraf dist",
+    "change:empty": "changeset add --empty",
+    "vp": "pnpm changeset version",
+    "publish:only": "changeset publish --registry=https://registry.npmjs.com/",
+    "prerelease": "pnpm test:all && pnpm build && pnpm vp",
+    "release": "pnpm publish:only"
+  },
+  "keywords": [
+    "ms-libs"
+  ],
+  "author": {
+    "name": "lanbery",
+    "email": "lanbery@gmail.com",
+    "url": "https://open.xtsai.cn"
+  }
+}

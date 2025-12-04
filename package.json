@@ -4,10 +4,48 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier \"**/**/*.{ts,tsx,js,json,mjs}\" --write --cache --ignore-unknown",
+    "lint": "eslint \"*/src/**/*.ts\" --fix",
+    "lint-staged": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.15.0"
+  "keywords": [
+    "microservice",
+    "nestjs"
+  ],
+  "author": {
+    "name": "lanbery",
+    "email": "lanbery@gmail.com",
+    "url": "https://open.xtsai.cn"
+  },
+  "license": "BSD-3",
+  "lint-staged": {
+    "*.{html,jsx,tsx,scss,css,sass,md}": [
+      "prettier \"**/**/*.{ts,js,json,tsx,mjs,html}\" --cache --ignore-path ./.prettierignore --write"
+    ],
+    "*.{js,ts,tsx,json,jsx}": [
+      "pnpm run lint"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "npm": {
+    "publish": false
+  },
+  "engines": {
+    "node": "^18 || >=20"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "~3.2.5",
+    "typescript-eslint": "^8.48.1"
+  }
 }
